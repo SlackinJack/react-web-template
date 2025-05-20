@@ -29,13 +29,14 @@ export default function CalendarEntry({
     return (
         <div className="w-[90vw] h-[240px] flex flex-row justify-center items-center">
             <div className="w-[96px] h-[240px] flex flex-col justify-center color-black text-center overflow-hidden">
-                <p className="text-[24px] text-red-600">{eventStartMonth}</p>
-                <p className="text-[48px]">{eventStartDate}</p>
+                <h3 className="text-red-600">{eventStartMonth}</h3>
+                <h2>{eventStartDate}</h2>
+                <p>{eventStartTime}</p>
             </div>
             <div className="w-full h-full ml-[32px] flex flex-col place-content-center relative">
                 <img className="z-0 absolute w-full h-full object-cover" src={imageSourceIn} alt={imageAltIn}/>
                 <div className="z-1 absolute pl-[32px] mt-[-4px]">
-                    <p className={`text-[40px] ${textClassNames}`}>{titleIn}</p>
+                    <h2 className={textClassNames}>{titleIn}</h2>
                     <p className={textClassNames}>{subtitleIn}</p>
                 </div>
             </div>

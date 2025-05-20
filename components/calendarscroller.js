@@ -41,7 +41,7 @@ export default function CalendarScroller({ contentIn }) {
     }
 
     return (
-        <div className="h-[100vh] w-[100vw] mb-[48px]">
+        <div className="h-fit w-[100vw] mb-[48px]">
             <div className="px-[32px] pt-[56px]">
                 <h1>Events Calendar</h1>
                 <h2>Subtitle</h2>

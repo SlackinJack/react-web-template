@@ -25,14 +25,14 @@ export default function ImagePopup({ sourceIn, altTextIn, descriptionIn, isPortr
         image.src = sourceIn;
         image.alt = altTextIn;
 
-        var imageDescription = document.createElement("p");
-        imageDescription.className = "z-15 p-[24px] text-[24px] text-center font-bold text-white";
+        var imageDescription = document.createElement("h3");
+        imageDescription.className = "z-15 p-[24px] text-center font-bold text-white";
         // imageDescription.className += isPortrait ? " w-auto h-[100vh] content-center" : " h-auto w-[100vw] justify-center";
         imageDescription.className += " h-auto w-[100vw] justify-center";
         imageDescription.textContent = descriptionIn;
 
         var hintText = document.createElement("p");
-        hintText.className = "z-15 p-[14px] text-[14px] mt-[-16px] text-center italic text-gray-400";
+        hintText.className = "z-15 p-[14px] mt-[-16px] text-center italic text-gray-400";
         hintText.textContent = "Click anywhere to exit preview";
 
         div.appendChild(image);
@@ -42,8 +42,11 @@ export default function ImagePopup({ sourceIn, altTextIn, descriptionIn, isPortr
         galleryRoot.insertBefore(dim, galleryBody);
     }
 
-    const previewClassName = "masonry-element " + (isPortrait ? "masonry-element-vertical" : "masonry-element-horizontal");
+    const previewClassName = "h-full w-full flex flex-col color-black place-content-end border-[1px]" + (isPortrait ? " masonry-element-vertical" : " masonry-element-horizontal");
     return (
-        <img className={previewClassName} src={sourceIn} alt={altTextIn} onClick={onImageClick}/>
+        <div className={previewClassName}>
+            <img className="z-0 h-full w-full" src={sourceIn} alt={altTextIn} onClick={onImageClick}/>
+            <p className="z-1 dynamic-bg h-[32px] ml-[8px] mt-[6px]">{descriptionIn}</p>
+        </div>
     );
 }

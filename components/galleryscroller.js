@@ -23,7 +23,7 @@ export default function GalleryScroller({ contentIn }) {
     }
 
     return (
-        <div id="galleryRoot" className="mb-[48px]">
+        <div id="galleryRoot" className="h-fit w-[100vw] mb-[48px]">
             <div id="galleryBody" className="px-[32px] pt-[56px]">
                 <h1>Gallery Title</h1>
                 <h2>Gallery Subtitle</h2>

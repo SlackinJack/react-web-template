@@ -7,6 +7,9 @@ import FullScreenContent from "./fullscreencontent";
 export default function PagedFullScreenContentScroller({ contentIn }) {
     const SCROLL_TIMEOUT_DELAY = 627.5;
 
+    var pagingDisabledForTouchscreenRunOnce = 0;
+    var pagingDisabledForTouchscreen = false;
+
     var currentScrollIndex = 0;
     var lastScrollValue = 0;
     var contents = {};
@@ -63,6 +66,7 @@ export default function PagedFullScreenContentScroller({ contentIn }) {
     }
 
     function onScrollEvent(event) {
+        if (pagingDisabledForTouchscreen) return;
         updateScrollPosition(event);
         if (!canJump) return;
         canJump = false;
@@ -72,9 +76,13 @@ export default function PagedFullScreenContentScroller({ contentIn }) {
 
     useEffect(() => {
         window.addEventListener("scroll", onScrollEvent, { passive: false });
+        if (pagingDisabledForTouchscreenRunOnce === 0) {
+            pagingDisabledForTouchscreen = (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(pointer: none)').matches);
+            pagingDisabledForTouchscreenRunOnce = 1;
+        }
     }, []);
     return (
-        <div id="contentRoot" className="flex flex-col justify-center content-center gap-[4px]">
+        <div id="contentRoot" className="h-fit w-[100vw] mb-[4px] flex flex-col justify-center content-center gap-[4px]">
             {Object.values(contents)}
         </div>
     );

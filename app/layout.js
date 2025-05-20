@@ -11,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
-            <body className="antialiased h-[100vh] w-[100vw]">
+        <html lang="en" className="dynamic-bg">
+            <body className="dynamic-bg antialiased h-[100vh] w-[100vw]">
                 <Header/>
                 <div className="h-[100vh] w-[100vw] flex flex-col">
                     {children}
